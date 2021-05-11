@@ -16,10 +16,30 @@ import Licences from './pages/licences';
 
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggle = () => {
+    setIsOpen(!isOpen)
+  }
+
+  useEffect(() => {
+    const hideMenu = () => {
+      if (window.innerWidth > 768 && isOpen) {
+        setIsOpen(false)
+        console.log('i resizedddddd')
+      }
+    }
+
+    window.addEventListener('resize', hideMenu);
+
+    return () => {
+      window.removeEventListener('resize', hideMenu);
+    }
+  })
   return (
     <>
-      <Navbar />
-      <Dropdownmenu />
+      <Navbar toggle={toggle} />
+      <Dropdownmenu isOpen={isOpen} toggle={toggle} />
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/leclub' exact component={Leclub} />
