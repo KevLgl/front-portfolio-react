@@ -3,7 +3,7 @@ import React from 'react'
 function Licences() {
     return (
         <div>
-            page LICENCES
+            <p className="text-red-600"> LICENCES</p>
         </div>
     )
 }

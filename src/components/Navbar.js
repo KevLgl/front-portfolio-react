@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Navbar = ({ toggle }) => {
     return (
         <nav
-            className="flex justify-between item-center h16 bg-primary text-black relative shadow-sm font-mono h-8"
+            className="flex justify-between item-center h16 bg-primary text-black shadow-sm font-mono h-20"
             role="navigation"
         >
             <div
@@ -23,13 +23,20 @@ const Navbar = ({ toggle }) => {
                     />
                 </svg>
             </div>
-            <div className="pr-8 md:block hidden text-white">
-                <Link className="p-4" to="/">Home</Link>
-                <Link className="p-4" to="/leclub">Le club</Link>
-                <Link className="p-4" to="/equipes">Nos équipes</Link>
-                <Link className="p-4" to="/boutique">Boutique</Link>
-                <Link className="p-4" to="/licences">Licences</Link>
-                <Link className="p-4" to="/contact">Contact</Link>
+            <div className="pr-8 md:block hidden text-white w-full">
+                <div className="flex justify-center">
+                    <Link className="p-4 mt-6" to="/">Home</Link>
+                    <Link className="p-4 mt-6" to="/leclub">Le club</Link>
+                    <Link className="p-4 mt-6" to="/equipes">Nos équipes</Link>
+                    {/* LOGO */}
+                    <Link className="p-4" to="/">
+                        <img className="h-20 w-20 inline" src="logo/blanc.png" />
+                    </Link>
+
+                    <Link className="p-4 mt-6" to="/boutique">Boutique</Link>
+                    <Link className="p-4 mt-6" to="/licences">Licences</Link>
+                    <Link className="p-4 mt-6" to="/contact">Contact</Link>
+                </div>
             </div>
         </nav>
     )

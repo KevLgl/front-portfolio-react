@@ -4,7 +4,9 @@ import CarouselSlide from '../components/Carousel'
 const Home = () => {
     return (
         <>
-            <CarouselSlide />
+            <div className="mt-8">
+                <CarouselSlide />
+            </div>
         </>
     )
 }

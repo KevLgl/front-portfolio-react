@@ -12,7 +12,11 @@ const CarouselSlide = () => {
 
     return (
         <div>
-            <Carousel slides={slides} autoplay={true} interval={10000} />
+            <div className="relative">
+
+                <Carousel slides={slides} autoplay={true} interval={10000} />
+                <p className="absolute top-1/2 left-1/3 text-white font-bold">Enssemble, partageons la même passion</p>
+            </div>
         </div>
     )
 }

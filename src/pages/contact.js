@@ -3,7 +3,7 @@ import React from 'react'
 const Contact = () => {
     return (
         <div>
-            contact PAGE 
+            <p className="text-red-600"> CONTACT</p>
         </div>
     )
 }

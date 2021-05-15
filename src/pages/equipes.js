@@ -3,7 +3,7 @@ import React from 'react'
 const Equipes = () => {
     return (
         <div>
-            page EQUIPE
+            <p className="text-red-600">EQUIPES</p>
         </div>
     )
 }
