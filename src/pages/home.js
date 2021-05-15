@@ -1,9 +1,10 @@
 import React from 'react'
+import CarouselSlide from '../components/Carousel'
 
 const Home = () => {
     return (
         <>
-            page HOME
+            <CarouselSlide />
         </>
     )
 }
