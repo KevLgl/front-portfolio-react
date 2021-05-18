@@ -15,7 +15,9 @@ const CarouselSlide = () => {
             <div className="relative">
 
                 <Carousel slides={slides} autoplay={true} interval={10000} />
-                <p className="absolute top-1/2 left-1/3 text-white font-bold">Enssemble, partageons la même passion</p>
+                <p className="absolute top-1/4 left-1/4 text-secondary font-bold text-4xl">Enssemble,</p>
+                <p className="absolute top-2/4 left-1/4 text-secondary font-bold text-4xl">partageons</p>
+                <p className="absolute top-3/4 left-1/4 text-secondary font-bold text-4xl">la même passion</p>
             </div>
         </div>
     )
