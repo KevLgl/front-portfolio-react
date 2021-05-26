@@ -16,13 +16,14 @@ const CarouselSlide = () => {
                     <div data-src="/images/2.jpeg" />
                     <div data-src="/images/3.jpeg" />
                 </AwesomeSlider>
+                <div className="absolute bottom-0 z-20">
+                    <Redbanner />
+                </div>
+                <div className="absolute top-1/3 left-20 z-20">
+                    <Typer />
+                </div>
             </div>
-            <div className="absolute bottom-16 z-20">
-                <Redbanner />
-            </div>
-            <div className="absolute top-1/3 left-20 z-20">
-                <Typer />
-            </div>
+
 
         </>
     )

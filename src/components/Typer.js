@@ -5,13 +5,13 @@ const Typer = () => {
     return (
         <div>
             <Typing>
-                <span className="text-secondary font-mono text-black text-4xl">Entente</span>
+                <span className="text-white font-mono text-black text-4xl">Entente</span>
                 <br />
-                <span className="text-secondary font-mono text-black text-4xl">Val de Reuil</span>
+                <span className="text-white font-mono text-black text-4xl">Val de Reuil</span>
                 <br />
-                <span className="text-secondary font-mono text-black text-4xl">Louviers</span>
+                <span className="text-white font-mono text-black text-4xl">Louviers</span>
                 <br />
-                <span className="text-secondary font-mono text-black text-4xl">Handball</span>
+                <span className="text-white font-mono text-black text-4xl">Handball</span>
             </Typing>
         </div >
     )
