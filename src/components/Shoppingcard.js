@@ -2,7 +2,7 @@ import React from 'react'
 
 const Shoppingcard = () => {
     return (
-        <div class="shadow-lg rounded-2xl  bg-white w-64 m-auto p-2">
+        <div class="shadow-2xl rounded-2xl  bg-white w-64 m-auto p-2">
             <img src="/images/maillot.png" alt="adidas" class="w-32 p-4 h-36 m-auto" />
             <div class="bg-primary m-3 p-4 rounded-lg">
                 <p class="text-white text-xl font-bold ">

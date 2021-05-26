@@ -1,14 +1,14 @@
 import React from 'react';
 
 
-const Redbanner = () => {
+const Smallredbanner = () => {
     return (
         <div className="w-3/5 relative">
             <div className="w-50">
-                <img src="/data/redbanner.svg"></img>
+                <img src="/data/smallredbanner.svg"></img>
             </div>
         </div>
     )
 }
 
-export default Redbanner
+export default Smallredbanner
