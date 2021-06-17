@@ -7,38 +7,38 @@ const Boutique = () => {
         <div>
             <Headerboutique />
             <p className="bg-yellow-500 rounded-lg m-3 text-center text-primary">Toute les commandes doivent être effectuées à l'adresse mail : vdr@gmail.com <br />
-            Indiquez: <br />
-            Votre Nom, prénom <br />
-            Numéro de telephone <br />
-            Les articles que vous voulez commander
+                Indiquez: <br />
+                Votre Nom, prénom <br />
+                Numéro de telephone <br />
+                Les articles que vous voulez commander
             </p>
             <div className="mt-12 flex flex-wrap align-center justify-center">
                 <div className="mb-6 mx-3">
-                    <Shoppingcard />
+                    <Shoppingcard imgsrc="/images/maillot.png" title="Titre" description="description" prix="prix" />
                 </div>
                 <div className="mb-6 mx-3">
-                    <Shoppingcard />
+                    <Shoppingcard imgsrc="/images/maillot.png" title="Titre" description="description" prix="prix" />
                 </div>
                 <div className="mb-6 mx-3">
-                    <Shoppingcard />
+                    <Shoppingcard imgsrc="/images/maillot.png" title="Titre" description="description" prix="prix" />
                 </div>
                 <div className="mb-6 mx-3">
-                    <Shoppingcard />
+                    <Shoppingcard imgsrc="/images/maillot.png" title="Titre" description="description" prix="prix" />
                 </div>
                 <div className="mb-6 mx-3">
-                    <Shoppingcard />
+                    <Shoppingcard imgsrc="/images/maillot.png" title="Titre" description="description" prix="prix" />
                 </div>
                 <div className="mb-6 mx-3">
-                    <Shoppingcard />
+                    <Shoppingcard imgsrc="/images/maillot.png" title="Titre" description="description" prix="prix" />
                 </div>
                 <div className="mb-6 mx-3">
-                    <Shoppingcard />
+                    <Shoppingcard imgsrc="/images/maillot.png" title="Titre" description="description" prix="prix" />
                 </div>
                 <div className="mb-6 mx-3">
-                    <Shoppingcard />
+                    <Shoppingcard imgsrc="/images/maillot.png" title="Titre" description="description" prix="prix" />
                 </div>
                 <div className="mb-6 mx-3">
-                    <Shoppingcard />
+                    <Shoppingcard imgsrc="/images/maillot.png" title="Titre" description="description" prix="prix" />
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import Articlecard from '../components/Articlecard'
 import CarouselSlide from '../components/Carousel'
 import Lesmatchcontent from '../components/Lesmatchcontent'
+import Nosarticlestitle from '../components/Nosarticlestitle'
 
 
 const Home = () => {
@@ -22,20 +23,22 @@ const Home = () => {
                         <Lesmatchcontent />
                     </div>
                 </div>
+                <div className="flex flex-wrap align-center justify-center mt-2">
+                    <Nosarticlestitle />
+                </div>
 
-                <h2 className="mt-12 text-center font-black font-mono text-primary text-4xl">Nos articles</h2>
                 <div className="mt-12 flex flex-wrap align-center justify-center">
                     <div className="mb-6 mx-3">
-                        <Articlecard />
+                        <Articlecard title="Titre 1" subtitle="sous-titre 1" content="content 1" />
                     </div>
                     <div className="mb-6 mx-3">
-                        <Articlecard />
+                        <Articlecard title="Titre 2" subtitle="sous-titre 2" content="content 2" />
                     </div>
                     <div className="mb-6 mx-3">
-                        <Articlecard />
+                        <Articlecard title="Titre 3" subtitle="sous-titre 3" content="content 3" />
                     </div>
                     <div className="mb-6 mx-3">
-                        <Articlecard />
+                        <Articlecard title="Titre 4" subtitle="sous-titre 4" content="content 4" />
                     </div>
                 </div>
 

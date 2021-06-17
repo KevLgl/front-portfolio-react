@@ -1,10 +1,9 @@
 import React from 'react'
+import Pdfform from '../components/Pdfform'
 
 function Licences() {
     return (
-        <div>
-            <p className="text-red-600"> LICENCES</p>
-        </div>
+        <Pdfform />
     )
 }
 
