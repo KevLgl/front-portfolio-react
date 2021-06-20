@@ -12,6 +12,7 @@ import Contact from './pages/contact';
 import Equipes from './pages/equipes';
 import Leclub from './pages/leclub';
 import Licences from './pages/licences';
+import Pdfdoc from './pages/pdfdoc';
 
 
 
@@ -47,6 +48,7 @@ function App() {
         <Route path='/boutique' exact component={Boutique} />
         <Route path='/licences' exact component={Licences} />
         <Route path='/contact' exact component={Contact} />
+        <Route path='/pdfdoc' exact component={Pdfdoc} />
       </Switch>
       <Footer />
     </>

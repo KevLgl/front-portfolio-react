@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { jsPDF } from "jspdf";
+
 
 class Pdfform extends Component {
+
     state = {
         nomSaisi: "",
         prenomSaisi: "",
@@ -18,6 +21,59 @@ class Pdfform extends Component {
         reglementSaisi: "",
         chartreSaisi: "",
         photoSaisi: ""
+    }
+    createpdf = () => {
+        const doc = new jsPDF();
+        //HEADER
+        //LOGO 
+        doc.addImage("logo/blanc.png", "PNG", 15, 10, 20, 20);
+        //TEXT
+        doc.text("FICHE DE RENSEIGNEMENET 2021/2022", 30, 10);
+        // CONTENT
+        // NOM
+        doc.text("Nom:", 10, 60);
+        doc.text(this.state.nomSaisi, 30, 60);
+        // PRENOM
+        doc.text("Prenom:", 10, 70);
+        doc.text(this.state.prenomSaisi, 40, 70);
+        //DATE DE NAISSANCE
+        doc.text("Date de naissance:", 10, 80);
+        doc.text(this.state.dateSaisi, 60, 80);
+        //LIEU DE NAISSANCE
+        doc.text("Lieu de naissance:", 10, 90);
+        doc.text(this.state.lieuSaisi, 60, 90);
+        //SEXE
+        doc.text("Sexe:", 10, 100);
+        doc.text(this.state.sexeSaisi, 30, 100);
+        //TAILLE
+        doc.text("Taille:", 10, 110);
+        doc.text(this.state.tailleSaisi, 60, 110);
+        //LATERALITE
+        doc.text("Lateralité:", 10, 120);
+        doc.text(this.state.lateraliteSaisi, 60, 120);
+        //ADRESSE
+        doc.text("Adresse:", 10, 130);
+        doc.text(this.state.adresseSaisi, 60, 130);
+        //CP
+        doc.text("CP:", 10, 140);
+        doc.text(this.state.cpSaisi, 60, 140);
+        //VILLE
+        doc.text("Ville:", 10, 150);
+        doc.text(this.state.villeSaisi, 60, 150);
+        //TEL1
+        doc.text("Tel1:", 10, 160);
+        doc.text(this.state.tel1Saisi, 60, 160);
+        //TEL2
+        doc.text("Tel2:", 10, 170);
+        doc.text(this.state.tel2Saisi, 60, 170);
+        //TEL3 
+        doc.text("Tel3:", 10, 180);
+        doc.text(this.state.tel3Saisi, 60, 180);
+        //REGLEMENT 
+        //CHARTRE
+        //PHOTO
+
+        doc.save("a4.pdf");
     }
 
     render() {
@@ -71,7 +127,7 @@ class Pdfform extends Component {
                             value={this.state.sexeSaisi}
                             onChange={(event) => this.setState({ sexeSaisi: event.target.value })}
                         />
-                        />
+
                         {/* TAILLE */}
                         <label for="height">Taille</label>
                         <input
@@ -80,7 +136,6 @@ class Pdfform extends Component {
                             id="height"
                             value={this.state.tailleSaisi}
                             onChange={(event) => this.setState({ tailleSaisi: event.target.value })}
-                        />
                         />
                         {/* LATERALITE */}
                         <label for="laterality">Lateralité</label>
@@ -226,7 +281,7 @@ class Pdfform extends Component {
                                 </span>
                             </label>
                         </div>
-                        <button type="submit" > valider</button>
+                        <button type="submit" onClick={() => this.createpdf()} > valider</button>
                     </form>
                 </div>
             </>
