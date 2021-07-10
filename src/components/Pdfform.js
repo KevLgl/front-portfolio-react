@@ -1,292 +1,243 @@
-import React, { Component } from 'react';
-import { jsPDF } from "jspdf";
 
+import React from 'react';
+import { useFormik, Field } from 'formik';
 
-class Pdfform extends Component {
-
-    state = {
-        nomSaisi: "",
-        prenomSaisi: "",
-        dateSaisi: "",
-        lieuSaisi: "",
-        sexeSaisi: "",
-        tailleSaisi: "",
-        lateraliteSaisi: "",
-        adresseSaisi: "",
-        cpSaisi: "",
-        villeSaisi: "",
-        tel1Saisi: "",
-        tel2Saisi: "",
-        tel3Saisi: "",
-        reglementSaisi: "",
-        chartreSaisi: "",
-        photoSaisi: ""
-    }
-    createpdf = () => {
-        const doc = new jsPDF();
-        //HEADER
-        //LOGO 
-        doc.addImage("logo/blanc.png", "PNG", 15, 10, 20, 20);
-        //TEXT
-        doc.text("FICHE DE RENSEIGNEMENET 2021/2022", 30, 10);
-        // CONTENT
-        // NOM
-        doc.text("Nom:", 10, 60);
-        doc.text(this.state.nomSaisi, 30, 60);
-        // PRENOM
-        doc.text("Prenom:", 10, 70);
-        doc.text(this.state.prenomSaisi, 40, 70);
-        //DATE DE NAISSANCE
-        doc.text("Date de naissance:", 10, 80);
-        doc.text(this.state.dateSaisi, 60, 80);
-        //LIEU DE NAISSANCE
-        doc.text("Lieu de naissance:", 10, 90);
-        doc.text(this.state.lieuSaisi, 60, 90);
-        //SEXE
-        doc.text("Sexe:", 10, 100);
-        doc.text(this.state.sexeSaisi, 30, 100);
-        //TAILLE
-        doc.text("Taille:", 10, 110);
-        doc.text(this.state.tailleSaisi, 60, 110);
-        //LATERALITE
-        doc.text("Lateralité:", 10, 120);
-        doc.text(this.state.lateraliteSaisi, 60, 120);
-        //ADRESSE
-        doc.text("Adresse:", 10, 130);
-        doc.text(this.state.adresseSaisi, 60, 130);
-        //CP
-        doc.text("CP:", 10, 140);
-        doc.text(this.state.cpSaisi, 60, 140);
-        //VILLE
-        doc.text("Ville:", 10, 150);
-        doc.text(this.state.villeSaisi, 60, 150);
-        //TEL1
-        doc.text("Tel1:", 10, 160);
-        doc.text(this.state.tel1Saisi, 60, 160);
-        //TEL2
-        doc.text("Tel2:", 10, 170);
-        doc.text(this.state.tel2Saisi, 60, 170);
-        //TEL3 
-        doc.text("Tel3:", 10, 180);
-        doc.text(this.state.tel3Saisi, 60, 180);
-        //REGLEMENT 
-        //CHARTRE
-        //PHOTO
-
-        doc.save("a4.pdf");
-    }
-
-    render() {
+const Pdfform = () => {
+        const formik = useFormik({
+                initialValues: {
+                  firstName: '',
+                  lastName: '',
+                  birthdate:'',
+                  place_of_birth:'',
+                  sexe:'',
+                  height:'',
+                  lateralite:'',
+                  adress:'',
+                  cp:'',
+                  country:'',
+                  phone_number1:'',
+                  phone_number2:'',
+                  phone_number3:'',
+                  email: '',
+                  reglement:false,
+                  chartre:false,
+                  photo:false,
+                },
+                onSubmit: values => {
+                  alert(JSON.stringify(values, null, 2));
+                },
+              });
         return (
-            <>
-                <div>
-                    <h2>Formulaire de licences</h2>
-                    <form>
-                        {/* NOM */}
-                        <label for="name">Nom :</label>
+                <form onSubmit={formik.handleSubmit}>
+                        <label htmlFor="firstName">Prenom:</label>
                         <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            value={this.state.nomSaisi}
-                            onChange={(event) => this.setState({ nomSaisi: event.target.value })}
-                        />
-                        {/* PRENOM */}
-                        <label for="firstname">Prenom :</label>
-                        <input
-                            type="text"
-                            name="firstname"
-                            id="firstname"
-                            value={this.state.prenomSaisi}
-                            onChange={(event) => this.setState({ prenomSaisi: event.target.value })}
-                        />
-                        {/* DATE DE NAISSANCE */}
-                        <label for="birthdate">Date de naissance :</label>
-                        <input
-                            type="date"
-                            name="birthdate"
-                            id="birthdate"
-                            value={this.state.dateSaisi}
-                            onChange={(event) => this.setState({ dateSaisi: event.target.value })}
-                        />
-                        {/* LIEU DE NAISSANCE */}
-                        <label for="birthcity">Lieu de naissance</label>
-                        <input
-                            type="text"
-                            name="birthdate"
-                            id="birthdate"
-                            value={this.state.lieuSaisi}
-                            onChange={(event) => this.setState({ lieuSaisi: event.target.value })}
-                        />
-                        {/* SEXE */}
-                        <label for="sexe">Sexe</label>
-                        <input
-                            type="text"
-                            name="sexe"
-                            id="sexe"
-                            value={this.state.sexeSaisi}
-                            onChange={(event) => this.setState({ sexeSaisi: event.target.value })}
+                        id="firstName"
+                        name="firstName"
+                        type="text"
+                        onChange={formik.handleChange}
+                        value={formik.values.firstName}
                         />
 
-                        {/* TAILLE */}
-                        <label for="height">Taille</label>
-                        <input
-                            type="number"
-                            name="height"
-                            id="height"
-                            value={this.state.tailleSaisi}
-                            onChange={(event) => this.setState({ tailleSaisi: event.target.value })}
-                        />
-                        {/* LATERALITE */}
-                        <label for="laterality">Lateralité</label>
-                        <input
-                            type="text"
-                            name="laterality"
-                            id="laterality"
-                            value={this.state.lateraliteSaisi}
-                            onChange={(event) => this.setState({ lateraliteSaisi: event.target.value })}
-                        />
-                        {/* ADRESSE */}
-                        <label for="adress">Adresse</label>
-                        <input
-                            type="text"
-                            name="adress"
-                            id="adress"
-                            value={this.state.adresseSaisi}
-                            onChange={(event) => this.setState({ adresseSaisi: event.target.value })}
-                        />
-                        {/* CODE POSTAL */}
-                        <label for="codepostal">Code postal</label>
-                        <input
-                            type="text"
-                            name="codepostal"
-                            id="codepostal"
-                            value={this.state.cpSaisi}
-                            onChange={(event) => this.setState({ cpSaisi: event.target.value })}
-                        />
-                        {/* VILLE */}
-                        <label for="city">Ville</label>
-                        <input
-                            type="text"
-                            name="city"
-                            id="city"
-                            value={this.state.villeSaisi}
-                            onChange={(event) => this.setState({ villeSaisi: event.target.value })}
-                        />
-                        {/* TEL DOM  */}
-                        <label for="tel1">Telephone domicile</label>
-                        <input
-                            type="number"
-                            name="tel1"
-                            id="tel1"
-                            value={this.state.tel1Saisi}
-                            onChange={(event) => this.setState({ tel1Saisi: event.target.value })}
-                        />
-                        {/* TEL LICENCIE  */}
-                        <label for="tel2">Telephone licencié</label>
-                        <input
-                            type="number"
-                            name="tel2"
-                            id="tel2"
-                            value={this.state.tel2Saisi}
-                            onChange={(event) => this.setState({ tel2Saisi: event.target.value })}
-                        />
-                        {/* TEL RESPONSABLE  */}
-                        <label for="tel3">Telephone responsable</label>
-                        <input
-                            type="number"
-                            name="tel3"
-                            id="tel3"
-                            value={this.state.tel3Saisi}
-                            onChange={(event) => this.setState({ tel3Saisi: event.target.value })}
-                        />
-                        {/* EMAIL  */}
-                        <label for="email">E-mail</label>
-                        <input
-                            type="email"
-                            name="email"
-                            id="email"
-                            value={this.state.emailSaisi}
-                            onChange={(event) => this.setState({ emailSaisi: event.target.value })}
-                        />
-                        {/* BOOLEAN reglement interieur*/}
-                        <div class="flex items-center gap-8">
-                            <h3>reglement interieur</h3>
-                            <label class="inline-flex items-center">
-                                <input
-                                    type="radio"
-                                    name="reglementinterieur"
-                                    class="h-5 w-5 text-red-600"
-                                    id="reglementinterieur" />
-                                <span class="ml-2 text-gray-700">
-                                    J'accepte
-                                </span>
-                            </label>
-                            <label class="inline-flex items-center">
-                                <input
-                                    type="radio"
-                                    name="reglementinterieur"
-                                    class="h-5 w-5 text-red-600"
-                                />
-                                <span class="ml-2 text-gray-700">
-                                    Je refuse
-                                </span>
-                            </label>
-                        </div>
-                        {/* BOOLEAN chartre club */}
-                        <div class="flex items-center gap-8">
-                            <h3>chartre club</h3>
-                            <label class="inline-flex items-center">
-                                <input
-                                    type="radio"
-                                    name="chartreclub"
-                                    class="h-5 w-5 text-red-600"
-                                />
-                                <span class="ml-2 text-gray-700">
-                                    J'accepte
-                                </span>
-                            </label>
-                            <label class="inline-flex items-center">
-                                <input
-                                    type="radio"
-                                    name="chartreclub"
-                                    class="h-5 w-5 text-red-600"
-                                />
-                                <span class="ml-2 text-gray-700">
-                                    Je refuse
-                                </span>
-                            </label>
-                        </div>
-                        {/* BOOLEAN photos */}
-                        <div class="flex items-center gap-8">
-                            <h3>Photos club</h3>
-                            <label class="inline-flex items-center">
-                                <input
-                                    type="radio"
-                                    name="photoclub"
-                                    class="h-5 w-5 text-red-600" />
-                                <span class="ml-2 text-gray-700">
-                                    J'accepte
-                                </span>
-                            </label>
-                            <label class="inline-flex items-center">
-                                <input
-                                    type="radio"
-                                    name="photoclub"
-                                    class="h-5 w-5 text-red-600"
+                        <br />
 
-                                />
-                                <span class="ml-2 text-gray-700">
-                                    Je refuse
-                                </span>
-                            </label>
-                        </div>
-                        <button type="submit" onClick={() => this.createpdf()} > valider</button>
-                    </form>
-                </div>
-            </>
+                        <label htmlFor="lastName">Nom:</label>
+                        <input
+                        id="lastName"
+                        name="lastName"
+                        type="text"
+                        onChange={formik.handleChange}
+                        value={formik.values.lastName}
+                        />
+
+                        <br />
+
+                        <label htmlFor="birthdate">Date de naissance:</label>
+                        <input
+                        id="birthdate"
+                        name="birthdate"
+                        type="date"
+                        onChange={formik.handleChange}
+                        value={formik.values.birthdate}
+                        />
+
+                        <br />
+
+                        <label htmlFor="place_of_birth">Lieu de naissance:</label>
+                        <input
+                        id="place_of_birth"
+                        name="place_of_birth"
+                        type="text"
+                        onChange={formik.handleChange}
+                        value={formik.values.place_of_birth}
+                        />
+
+                        <br />
+
+                        <label htmlFor="sexe">Sexe:</label>
+                        <input
+                        id="sexe"
+                        name="sexe"
+                        type="radio"
+                        value="femme"
+                        onChange={formik.handleChange}
+                        />
+                        <span> Femme </span>
+                         <input
+                        id="sexe"
+                        name="sexe"
+                        type="radio"
+                        value="homme"
+                        onChange={formik.handleChange}
+                        />
+                        <span> Homme </span>
+
+                        <br />
+
+                        <label htmlFor="height">Taille:</label>
+                        <input
+                        id="height"
+                        name="height"
+                        type="number"
+                        onChange={formik.handleChange}
+                        value={formik.values.height}
+                        />
+
+                        <br />
+
+                        <label htmlFor="lateralite">Latéralité:</label>
+                        <input
+                        id="lateralite"
+                        name="lateralite"
+                        type="radio"
+                        value="gaucher"
+                        onChange={formik.handleChange}
+                        />
+                        <span> Gaucher </span>
+                        <input
+                        id="lateralite"
+                        name="lateralite"
+                        type="radio"
+                        value="droitier"
+                        onChange={formik.handleChange}
+                        />
+                        <span> Droitier </span>
+
+                        <br />
+
+                        <label htmlFor="adress">Adresse:</label>
+                        <input
+                        id="adress"
+                        name="adress"
+                        type="text"
+                        onChange={formik.handleChange}
+                        value={formik.values.adress}
+                        />
+
+                        <br />
+
+                        <label htmlFor="cp">Code postal:</label>
+                        <input
+                        id="cp"
+                        name="cp"
+                        type="number"
+                        onChange={formik.handleChange}
+                        value={formik.values.cp}
+                        />
+
+                        <br />
+
+                        <label htmlFor="country">Ville:</label>
+                        <input
+                        id="country"
+                        name="country"
+                        type="text"
+                        onChange={formik.handleChange}
+                        value={formik.values.country}
+                        />
+
+                        <br />
+
+                        <label htmlFor="phone_number1">Numero telephone licencié:</label>
+                        <input
+                        id="phone_number1"
+                        name="phone_number1"
+                        type="number"
+                        onChange={formik.handleChange}
+                        value={formik.values.phone_number1}
+                        />
+
+                        <br />
+
+                        <label htmlFor="phone_number2">Numero telephone domicile:</label>
+                        <input
+                        id="phone_number2"
+                        name="phone_number2"
+                        type="number"
+                        onChange={formik.handleChange}
+                        value={formik.values.phone_number2}
+                        />
+
+                        <br />
+
+                        <label htmlFor="phone_number3">Numero telephone responsable</label>
+                        <input
+                        id="phone_number3"
+                        name="phone_number3"
+                        type="number"
+                        onChange={formik.handleChange}
+                        value={formik.values.phone_number3}
+                        />
+
+                        <br />
+
+                        <label htmlFor="email">Adresse e-mail:</label>
+                        <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        onChange={formik.handleChange}
+                        value={formik.values.email}
+                        />
+
+                        <br />
+
+                        <label htmlFor="reglement">Je déclare avoir pris connaissance du règlement intérieur du club et en accepter les conditions</label>
+                        <input
+                        id="reglement"
+                        name="reglement"
+                        type="checkbox"
+                        onChange={formik.handleChange}
+                        value={formik.values.reglement}
+                        />
+
+                        <br />
+
+                        <label htmlFor="chartre">Je déclare avoir pris connaissance de la Charte du club et en accepter les conditions</label>
+                        <input
+                        id="chartre"
+                        name="chartre"
+                        type="checkbox"
+                        onChange={formik.handleChange}
+                        value={formik.values.chartre}
+                        />
+
+                        <br />
+
+
+                        <label htmlFor="photo">J’accepte que l’EVDRLHB publie des photos prises dans le cadre des rencontres sportives dans le cadre d’activités liées à la vie du club sur lesquelles j’apparais</label>
+                        <input
+                        id="photo"
+                        name="photo"
+                        type="checkbox"
+                        onChange={formik.handleChange}
+                        value={formik.values.photo}
+                        />
+
+                        <br />
+
+                        <button type="submit">Envoyer</button>
+                </form>
         )
-    }
 }
 
-export default Pdfform;
+export default Pdfform
