@@ -1,11 +1,15 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik, Formik } from 'formik';
 import * as Yup from 'yup';
 import Titlelicence from './Titlelicence';
 import axios from '../plugin/axios'
 
 const Pdfform = () => {
+        const [successMessage, setSuccessMessage] = useState(false);
+        const [notSuccessMessage, setNotSuccessMessage] = useState(false);
+
+
         const validationSchema = Yup.object().shape({
                 firstName: Yup.string()
                         .min(2, 'Trop court!')
@@ -76,19 +80,22 @@ const Pdfform = () => {
                                 data: values
                             })
                             .then(function (response) {
-                                console.log(response);
+                                setSuccessMessage(true);
                             })
                             .catch(function (error) {
+                                setNotSuccessMessage(true);
                                 console.log(error);
                             });
-                //   alert(JSON.stringify(values, null, 2));
+                            
                 },
-                validationSchema
+                validationSchema,
               });
-
+              function scrollToThetop(){
+                        window.scrollTo(0,0);
+              }
         return (
                 <>
-                <div className="flex flex-wrap align-center justify-center mt-2">
+                <div id="hdp" className="flex flex-wrap align-center justify-center mt-2">
                         <Titlelicence />
                 </div>
                 <form onSubmit={formik.handleSubmit}>
@@ -96,6 +103,26 @@ const Pdfform = () => {
                                 <div className="bg-gray-200 m-4 p-4 w-3/4 container flex  justify-center flex-col flex-1 h-full mx-auto rounded-lg">
                                 <div className="m-10 flex  justify-center flex-col
                                 ">
+                                        {successMessage &&
+                                                <div class="mb-4 bg-green-200 border-green-600 text-green-600 border-l-4 p-4" role="alert">
+                                                <p class="font-bold">
+                                                C'est fait!
+                                                </p>
+                                                <p>
+                                                Vos documents de licence ont bien été envoyés au club
+                                                </p>
+                                                </div>
+                                        }
+                                        {notSuccessMessage &&
+                                                <div class="mb-4 bg-red-200 border-red-600 text-red-600 border-l-4 p-4" role="alert">
+                                                        <p class="font-bold">
+                                                        Une erreur s'est produite
+                                                        </p>
+                                                        <p>
+                                                        Vos documents de licence n'ont pas été envoyés au club
+                                                        </p>
+                                                </div>
+                                        }
                                         <h2 className="text-center text-secondary mb-4 text-2xl">Informations personnelles:</h2>
                                         <div className="my-2">
                                                 <label htmlFor="firstName">Prénom: </label>
@@ -242,7 +269,7 @@ const Pdfform = () => {
                                                 />
                                                 {
                                                         formik.errors.cp && <p className="text-xs text-red-500 -bottom-6">{formik.errors.cp}</p>
-                                                }
+                                                }       
                                         </div>
                                         <div className="my-2">
                                                 <label htmlFor="country">Ville: </label>
@@ -284,7 +311,7 @@ const Pdfform = () => {
                                                 onChange={formik.handleChange}
                                                 value={formik.values.phone_number2}
                                                 />
-
+                                                
                                                 {
                                                         formik.errors.phone_number2 && <p className="text-xs text-red-500 -bottom-6">{formik.errors.phone_number2}</p>
                                                 }
@@ -365,9 +392,9 @@ const Pdfform = () => {
                                         </div>
                                         <h2 className="text-center text-secondary mb-4 text-2xl">Documents:</h2>
                                         <div className="my-2">
-                                                <button type="submit" className="py-2 px-4  bg-secondary  focus:ring-primary focus:ring-offset-primary text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg w-1/3">Envoyer</button>
+                                                <button onClick={scrollToThetop} type="submit" className="py-2 px-4  bg-secondary  focus:ring-primary focus:ring-offset-primary text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg w-1/3">Envoyer</button>
                                         </div>
-                                </div>
+                                </div>        
                                 </div>
                         </section>
                 </form>
