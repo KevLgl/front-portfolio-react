@@ -2,6 +2,7 @@
 import React from 'react';
 import { useFormik, Formik } from 'formik';
 import * as Yup from 'yup';
+import Titlelicence from './Titlelicence';
 
 const Pdfform = () => {
         const validationSchema = Yup.object().shape({
@@ -15,14 +16,14 @@ const Pdfform = () => {
                         .required('La date de naissance est obligatoire'),
                 place_of_birth: Yup.string()
                         .required('Votre lieu de naissance est obligatoire'),
-                sexe: Yup.string()
+                gender: Yup.string()
                         .required('Votre sexe est obligatoire'),
                 height: Yup.number()
                         .integer('Votre taille doit être renseignée en CM')
                         .required('Votre taille est obligatoire'),
                 lateralite: Yup.string()
                         .required('Votre latéralité est obligatoire'),
-                adress: Yup.string()
+                address: Yup.string()
                         .required('Votre adresse est obligatoire'),
                 cp: Yup.string()
                         .required('Votre code postal est obligatoire'),
@@ -50,10 +51,10 @@ const Pdfform = () => {
                   lastName: '',
                   birthdate:'',
                   place_of_birth:'',
-                  sexe:'',
+                  gender:'',
                   height:'',
                   lateralite:'',
-                  adress:'',
+                  address:'',
                   cp:'',
                   country:'',
                   phone_number1:'',
@@ -71,12 +72,18 @@ const Pdfform = () => {
               });
 
         return (
+                <>
+                <div className="flex flex-wrap align-center justify-center mt-2">
+                        <Titlelicence />
+                </div>
                 <form onSubmit={formik.handleSubmit}>
                         <section className="container flex items-center justify-center flex-1 h-full mx-auto">
                                 <div className="bg-gray-200 m-4 p-4 w-3/4 container flex  justify-center flex-col flex-1 h-full mx-auto rounded-lg">
-                                <div className="m-10 flex  justify-center flex-col">
+                                <div className="m-10 flex  justify-center flex-col
+                                ">
+                                        <h2 className="text-center text-secondary mb-4 text-2xl">Informations personnelles:</h2>
                                         <div className="my-2">
-                                                <label htmlFor="firstName">Prenom: </label>
+                                                <label htmlFor="firstName">Prénom: </label>
                                                 <input
                                                 className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-1/4 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                                 id="firstName"
@@ -84,7 +91,6 @@ const Pdfform = () => {
                                                 type="text"
                                                 onChange={formik.handleChange}
                                                 value={formik.values.firstName}
-                                                placeholder="Prénom"
                                                 />
                                                 {
                                                         formik.errors.firstName && <p className="text-xs text-red-500 -bottom-6">{formik.errors.firstName}</p>
@@ -134,25 +140,25 @@ const Pdfform = () => {
                                                 }
                                         </div>
                                         <div className="my-2">
-                                                <label htmlFor="sexe">Sexe: </label>
+                                                <label htmlFor="gender">Sexe: </label>
                                                 <input
-                                                id="sexe"
-                                                name="sexe"
+                                                id="gender"
+                                                name="gender"
                                                 type="radio"
                                                 value="femme"
                                                 onChange={formik.handleChange}
                                                 />
                                                 <span> Femme </span>
                                                 <input
-                                                id="sexe"
-                                                name="sexe"
+                                                id="gender"
+                                                name="gender"
                                                 type="radio"
                                                 value="homme"
                                                 onChange={formik.handleChange}
                                                 />
                                                 <span> Homme </span>
                                                 {
-                                                        formik.errors.sexe && <p className="text-xs text-red-500 -bottom-6">{formik.errors.sexe}</p>
+                                                        formik.errors.gender && <p className="text-xs text-red-500 -bottom-6">{formik.errors.gender}</p>
                                                 }
                                         </div>
 
@@ -195,18 +201,18 @@ const Pdfform = () => {
                                                 }
                                         </div>
                                         <div className="my-2">
-                                                <label htmlFor="adress">Adresse: </label>
+                                                <label htmlFor="address">Adresse: </label>
                                                 <input
-                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-1/4 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                                                id="adress"
-                                                name="adress"
+                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-5/6 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                                id="address"
+                                                name="address"
                                                 type="text"
                                                 onChange={formik.handleChange}
-                                                value={formik.values.adress}
+                                                value={formik.values.address}
                                                 />
 
                                                 {
-                                                        formik.errors.adress && <p className="text-xs text-red-500 -bottom-6">{formik.errors.adress}</p>
+                                                        formik.errors.address && <p className="text-xs text-red-500 -bottom-6">{formik.errors.address}</p>
                                                 }
                                         </div>
                                         <div className="my-2">
@@ -286,7 +292,7 @@ const Pdfform = () => {
                                         <div className="my-2">
                                                 <label htmlFor="email">Adresse e-mail: </label>
                                                 <input
-                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-1/4 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-2/4 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                                 id="email"
                                                 name="email"
                                                 type="email"
@@ -317,7 +323,6 @@ const Pdfform = () => {
                                                 value={formik.values.chartre}
                                                 />
                                         </div>
-
                                         <div className="my-2">
                                                 <label htmlFor="photo" className="mx-2">J’accepte que l’EVDRLHB publie des photos prises dans le cadre des rencontres sportives dans le cadre d’activités liées à la vie du club sur lesquelles j’apparais</label>
                                                 <input
@@ -328,6 +333,7 @@ const Pdfform = () => {
                                                 value={formik.values.photo}
                                                 />
                                         </div>
+                                        <h2 className="text-center text-secondary mb-4 text-2xl">Documents:</h2>
                                         <div className="my-2">
                                                 <button type="submit" className="py-2 px-4  bg-secondary  focus:ring-primary focus:ring-offset-primary text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg w-1/3">Envoyer</button>
                                         </div>
@@ -335,6 +341,7 @@ const Pdfform = () => {
                                 </div>
                         </section>
                 </form>
+                </>
         )
 }
 

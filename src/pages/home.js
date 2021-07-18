@@ -3,6 +3,7 @@ import Articlecard from '../components/Articlecard'
 import CarouselSlide from '../components/Carousel'
 import Lesmatchcontent from '../components/Lesmatchcontent'
 import Nosarticlestitle from '../components/Nosarticlestitle'
+import Lesmatchstitle from '../components/Lesmatchstitle'
 
 
 const Home = () => {
@@ -13,8 +14,9 @@ const Home = () => {
                 <div className="h-1/2">
                     <CarouselSlide />
                 </div>
-
-                <h2 className="mt-12 text-center font-black font-mono text-primary text-4xl">Les matchs du week-end</h2>
+                <div className="flex flex-wrap align-center justify-center mt-6">
+                    <Lesmatchstitle />
+                </div>
                 <div className="mt-12 flex flex-wrap align-center justify-center">
                     <div className="mb-6 mx-3">
                         <Lesmatchcontent />
