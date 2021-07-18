@@ -69,7 +69,18 @@ const Pdfform = () => {
                   photo:false,
                 },
                 onSubmit: values => {
-                  alert(JSON.stringify(values, null, 2));
+                        axios({
+                                method: 'post',
+                                url: '/fiche-inscriptions/create',
+                                data: values
+                            })
+                            .then(function (response) {
+                                console.log(response);
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+                //   alert(JSON.stringify(values, null, 2));
                 },
                 validationSchema
               });
