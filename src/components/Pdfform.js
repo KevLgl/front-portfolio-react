@@ -74,10 +74,18 @@ const Pdfform = () => {
                   photo:false,
                 },
                 onSubmit: values => {
+                        const form = new FormData()
+
+                        form.append('data', JSON.stringify(values))
+                        form.append('files', [])
+
                         axios({
                                 method: 'post',
                                 url: '/fiche-inscriptions/create',
-                                data: values
+                                data: form,
+                                headers: {
+                                  'content-type': 'multipart/form-data',
+                                },
                             })
                             .then(function (response) {
                                 setSuccessMessage(true);
@@ -86,7 +94,7 @@ const Pdfform = () => {
                                 setNotSuccessMessage(true);
                                 console.log(error);
                             });
-                            
+
                 },
                 validationSchema,
               });
@@ -269,7 +277,7 @@ const Pdfform = () => {
                                                 />
                                                 {
                                                         formik.errors.cp && <p className="text-xs text-red-500 -bottom-6">{formik.errors.cp}</p>
-                                                }       
+                                                }
                                         </div>
                                         <div className="my-2">
                                                 <label htmlFor="country">Ville: </label>
@@ -311,7 +319,7 @@ const Pdfform = () => {
                                                 onChange={formik.handleChange}
                                                 value={formik.values.phone_number2}
                                                 />
-                                                
+
                                                 {
                                                         formik.errors.phone_number2 && <p className="text-xs text-red-500 -bottom-6">{formik.errors.phone_number2}</p>
                                                 }
@@ -394,7 +402,7 @@ const Pdfform = () => {
                                         <div className="my-2">
                                                 <button onClick={scrollToThetop} type="submit" className="py-2 px-4  bg-secondary  focus:ring-primary focus:ring-offset-primary text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg w-1/3">Envoyer</button>
                                         </div>
-                                </div>        
+                                </div>
                                 </div>
                         </section>
                 </form>
