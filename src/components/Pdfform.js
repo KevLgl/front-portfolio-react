@@ -3,6 +3,7 @@ import React from 'react';
 import { useFormik, Formik } from 'formik';
 import * as Yup from 'yup';
 import Titlelicence from './Titlelicence';
+import axios from '../plugin/axios'
 
 const Pdfform = () => {
         const validationSchema = Yup.object().shape({
@@ -241,7 +242,7 @@ const Pdfform = () => {
                                                 />
                                                 {
                                                         formik.errors.cp && <p className="text-xs text-red-500 -bottom-6">{formik.errors.cp}</p>
-                                                }       
+                                                }
                                         </div>
                                         <div className="my-2">
                                                 <label htmlFor="country">Ville: </label>
@@ -283,7 +284,7 @@ const Pdfform = () => {
                                                 onChange={formik.handleChange}
                                                 value={formik.values.phone_number2}
                                                 />
-                                                
+
                                                 {
                                                         formik.errors.phone_number2 && <p className="text-xs text-red-500 -bottom-6">{formik.errors.phone_number2}</p>
                                                 }
@@ -366,7 +367,7 @@ const Pdfform = () => {
                                         <div className="my-2">
                                                 <button type="submit" className="py-2 px-4  bg-secondary  focus:ring-primary focus:ring-offset-primary text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg w-1/3">Envoyer</button>
                                         </div>
-                                </div>        
+                                </div>
                                 </div>
                         </section>
                 </form>
