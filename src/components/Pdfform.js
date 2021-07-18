@@ -39,10 +39,12 @@ const Pdfform = () => {
                         .integer('Mauvais format de numéro'),
                 phone_number3: Yup.number()
                         .integer('Mauvais format de numéro'),
+                phone_number4: Yup.number()
+                        .integer('Mauvais format de numéro'),
                 reglement: Yup.boolean()
                         .oneOf([true], "Vous devez accepter le règlement intérieur "),
-                chartre: Yup.boolean()
-                        .oneOf([true], "Vous devez accepter la chartre du club"),
+                charte: Yup.boolean()
+                        .oneOf([true], "Vous devez accepter la charte du club"),
               });
 
         const formik = useFormik({
@@ -60,9 +62,10 @@ const Pdfform = () => {
                   phone_number1:'',
                   phone_number2:'',
                   phone_number3:'',
+                  phone_number4:'',
                   email: '',
                   reglement:false,
-                  chartre:false,
+                  charte:false,
                   photo:false,
                 },
                 onSubmit: values => {
@@ -290,6 +293,21 @@ const Pdfform = () => {
                                                 }
                                         </div>
                                         <div className="my-2">
+                                                <label htmlFor="phone_number4">Numero telephone responsable 2: </label>
+                                                <input
+                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-1/4 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                                id="phone_number4"
+                                                name="phone_number4"
+                                                type="number"
+                                                onChange={formik.handleChange}
+                                                value={formik.values.phone_number4}
+                                                />
+
+                                                {
+                                                        formik.errors.phone_number4 && <p className="text-xs text-red-500 -bottom-6">{formik.errors.phone_number4}</p>
+                                                }
+                                        </div>
+                                        <div className="my-2">
                                                 <label htmlFor="email">Adresse e-mail: </label>
                                                 <input
                                                 className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-2/4 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -314,13 +332,13 @@ const Pdfform = () => {
                                                 />
                                         </div>
                                         <div className="my-2">
-                                                <label htmlFor="chartre" className="mx-2">Je déclare avoir pris connaissance de la Charte du club et en accepter les conditions</label>
+                                                <label htmlFor="charte" className="mx-2">Je déclare avoir pris connaissance de la Charte du club et en accepter les conditions</label>
                                                 <input
-                                                id="chartre"
-                                                name="chartre"
+                                                id="charte"
+                                                name="charte"
                                                 type="checkbox"
                                                 onChange={formik.handleChange}
-                                                value={formik.values.chartre}
+                                                value={formik.values.charte}
                                                 />
                                         </div>
                                         <div className="my-2">
